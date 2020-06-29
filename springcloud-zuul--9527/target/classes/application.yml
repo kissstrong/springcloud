@@ -1,0 +1,24 @@
+server:
+  port: 9527
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7001/eureka/
+    instance:
+
+
+      instance-id: zuul9527.com
+      prefer-ip-address: true
+spring:
+  application:
+    name: springcloud-zuul
+#http://localhost:8001//query
+#http://localhost:9527/springcloud-provider-dept/query
+zuul:
+  routes:
+    mydept.serviceId: springcloud-provider-dept
+    mydept.path: /mydept/**
+    ignored-services: "*"
+  #ignored-services: springcloud-provider-dept
+#http://localhost:9527/mydept/query/1
+#ignored-services: "*"
